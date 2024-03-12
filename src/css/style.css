@@ -18,19 +18,14 @@
       margin-right: 0;
       padding-left: 20px;}
     li {	display: list-item;}
-    .header {height:200px; background-size: cover;}
+    .header {height:200px; background-size: cover; background-position: 50%;}
     span {color: orange;}
-    p, h1 {margin: 10px;}
-      
-      .spinny {
-      animation: spin 4s linear infinite; 
-      -webkit-animation: spin 4s linear infinite;
-      }
-      @keyframes spin {
-        0% {transform:rotate(0deg);}
-        100% {transform:rotate(360deg);}
+    p, h1, h2, h3 {margin: 10px;}
+    .centre img {
+      margin: 10px;
     }
-      @-webkit-keyframes spin {
-        0%  {-webkit-transform: rotate(0deg);}
-        100% {-webkit-transform: rotate(360deg);}   
+    hr {
+      border: none;
+      height: 0px;
+      border-top: dotted 1px grey;
     }

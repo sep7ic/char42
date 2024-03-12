@@ -1,12 +1,15 @@
 ---
-title: test post
+title: myfirstpost 
 layout: base.njk
 date: "2024-03-12"
 catergories: ["starships", "test"]
 tags: 
-- general
 - post
-headImg: https://files.catbox.moe/qszihs.jpeg
+- general
+headImg: https://files.catbox.moe/d47uxf.gif
+headHeight: 400px
 ---
 
-test post
+# hello computer
+
+hey. im not entirely sure what to do for my first post but 
