@@ -9,6 +9,7 @@ tags:
 headImg: https://files.catbox.moe/d47uxf.gif
 headHeight: 400px
 ---
+<div class="header" style="background-image: url({{ headImg }}); height: {{ headHeight }};"></div>
 
 # hello computer
 
