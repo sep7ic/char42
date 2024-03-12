@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<style>
+        .postbox {
+            outline: 1px solid grey;
+            position: relative;
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    display: inline-block;
+    }
+    .postbox > img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;  
+        opacity: 0.5;
+    }
+    .half {height: 70px; position: relative;} .half>img{height: 45px; object-fit: cover;}
+    .stacked {position: absolute; width: 150px; height: 150px; display: inline-block; margin-left: 7px;}
+    .postbox > h2 {
+        position: absolute;
+        bottom: 1px;
+        left: 20px;
+    }
+    
+    .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+</style>
+<body>
+
+<div class="container">
+
+    <script id="replace_with_head" defer src="/replace.js"></script><script src="/js/head.js"></script>
+
+    <div class="main" style="width: 100%;">
+
+        <div class="content active" id="main">
+            <h1>Blog</h1>
+            <span class="context">check out some of my blogposts!</span>
+            <p>hi, welcome to my blog post area. this is just a lil spot for me to share my projects and thoughts. topics range from linguistics to book and game reviews. this is still a WIP so grammar and speling will likely not be the best</p>
+            <hr><br><br>
+            <h1>featured</h1>
+            <span class="context">some of my personal favourites :-)</span>
+            <br>
+            <div class="postbox blogpost" data-target="wordlorecaesar">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/circa-50-bc-julius-caesar-as-dictator-of-rome-wearing-a-news-photo-1678896712.jpg?crop=1.00xw:0.782xh;0,0.0350xh&resize=640:*" style="opacity: 0.5;">
+                <h2>wordlore - caesar</h2>
+            </div>
+            
+            <div class="postbox blogpost" data-target="battleofgranicus">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Spithridates_attacking_Alexander_from_behind_at_the_Battle_of_Granicus.jpg/220px-Spithridates_attacking_Alexander_from_behind_at_the_Battle_of_Granicus.jpg" style="opacity: 0.5;">
+                <h2>battle of the granicus</h2>
+            </div>
+            <div class="stacked">
+            <div data-target="demicroblog" class="postbox half blogpost"><img src="https://www.thoughtco.com/thmb/aJkmajF05rj0ZTOZUmWk6YGXSEU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-595913035-58b5a1663df78cdcd87de8f1.jpg" alt=""><h2>de microblog</h2></div>
+            <div data-target="enmicroblog" class="postbox half blogpost"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Flag_of_New_Zealand.svg/800px-Flag_of_New_Zealand.svg.png" alt=""><h2>en microblog</h2></div>
+        </div>
+        </div>
+    
+        <div class="content" id="wordlorecaesar"><div class="bar">wordlorecaesar.html</div><h2 class="backbtn">back</h2>
+            <h1>wordlore - the title caesar</h1>
+            <span>a breif history of the title caesar</span>
+            <p>The title “Caesar” originally began as a cognomen (a cognomen was the third name that a roman citizen was generally given, and was apart of the tria nomina, a three-part naming system. The tria nomina consisted of the praenomen (personal name), nomen (family name), and cognomen.)) The Cognomen Caesar is believed to have came from Sextus Julius Caesar, who was praised for killing an elephant (called "caesai" in the Moorish language) during a battle. As a result, he was granted the cognomen "Caesar," which means "elephant" or "thick head of hair" in Latin. Cognomina (the plural of cognomen) could be inherited within a family, which would pass down through generations. Julius Caesar's family belonged to the prestigious Julian clan, which claimed descent from Trojan prince and war hero Aeneas, and the goddess Venus (Aeneas was the son of the goddess, venus, and a prince of troy. Aeneas sailed to sicily, where his father, anchises, then died. Then he travlleded to latium, located in central italy, where he met latinus. Aeneas’ then had a child with Lavinia, whom was married to Aeneas by Latinus in a marriage alliance. Their baby boy was named Ascanius, and he would go on to found Alba Longa, which would eventually lead to Romulus and Remus an dyeah). The Julian clan was one of the oldest and most influential patrician families in Rome. The cognomen "Caesar" was not initially associated with his family but was later adopted as a hereditary name by his successors. “Caesar” may not have started out as a cognomen at all, as historians and linguists have argued that the suffix “ar” is extremely uncommon and unusual for latin, but it was common in the Sabine Oscan language, an Indo-European Italic language from southern italy. Caesars adoptive son, Augustus, who was originally named Gaius Octavius, subsequently took the name Gaius Julius Caesar Octavianus. After the establishment of the Roman Empire, he became known as Augustus Caesar. Tiberius, who succeeded Augustus as emperor, was born as Tiberius Claudius Nero and was later adopted by Augustus. He took the name Tiberius Julius Caesar, and the regnal name Tiberius Caesar Augustus. Caligula, whose birth name was Gaius Julius Caesar Germanicus, later took the name Gaius Caesar Augustus Germanicus. He was the son of Germanicus, who was a nephew of Tiberius. Claudius, born as Tiberius Claudius Drusus, was the fourth emperor of Rome. He became known as Tiberius Claudius Caesar Augustus Germanicus after ascending to the throne, however, did not gain the name through inheritance like the past 3 emperors but rather through the fact that he was apart of the Julio-Claudian dynasty (he was the great-nephew of Augustus). Nero, originally named Lucius Domitius Ahenobarbus, became the last Roman emperor of the Julio-Claudian dynasty. He was adopted by his great-uncle Claudius and became known as Nero Claudius Caesar Augustus Germanicus. Galba became the first emperor not not directly related to the Julii or the Julio-Claudian dynasty to assume the name “Caesar”, and passed it on to his son, which lead to it being used as a synonym for “emperor” Kaiser (the german word for emperor) is related to the title “Caesar”, and came from the althochdeutsch word “Keisar” which is directly borrowed from the latin “Caesar”. In slavic and cyrillic languages, Tzar also comes from the old slavic word “tsesari” which came from the latin “Caesar”. “Caesar” made its way into english as “Czar” (borrowed from russina) and essentially means an autocratic leader or someone in charge. (eg Drug Czar, someone emplyed by the gobernment to stop the illegal trade of drugs). Julius Caesar was such a cool dude that his cognomen eventually became synonymous with the word “Emperor” thousands of years later. </p>
+        </div>
+        <div class="content" id="battleofgranicus"><div class="bar">battleofgranicus.html</div><h2 class="backbtn">back</h2>
+            <h1>battle of the granicus</h1>
+            <p>In 334 bce, Alexander the Great embarked on a campaign to conquer the Persian Empire, claiming he was seeking revenge for Darius I’s invasion of his homeland during the persian wars. Alexander also claimed that he hoped to liberate the greek cities in the persian empire, however, upon arriving to Lampsacus, a major greek persian city, alexander and his army discovered that the civilians were quite content with being apart of the persian empire and and favoured the Persians. In response, Alexander threatened to kill the people, prompting them to request Anaximenes of Lampsacus to mediate on their behalf. Alexander knew of this, and swore on the Gods to do the opposite of whatever Anaximenes said. Anaximenes asked Alexander to enslave the woman and children, and to burn the temples to the ground. Bound by his oath, Alexander furiously ordered his men to retreat while they formulated their next plan. Along the way, many smaller regions surrendered to him, however, they were no use as the Macedonians direly needed to conquer a bigger city for both resources, time and ultimately a victory against the persians.
+                In the midst of this, a council meeting was held at Zeleia by the Persians where they would  deliberate how to handle the Macedonian invasion.
+                A Greek mercenary loyal to Darius, named “Memnon of Rhodes”, suggested that they set fire to the meadows and burn the persian crops in an attempt to destroy any and all assets that may have been useful to Alexander and his army. The Persians shut down his proposition out of fear that Memnon was attempting to drag out the war, in order to be seen in a good light by king darius.
+                While he and his army were moving towards the river of granicus, Alexander was alerted that persian cavalry, infantry and greek mercenaries would be positioned opposite them on the other side of the river. Alexander arranged his army into battle formation, with him and cavalry on the right flank, the heavier phalanx  formation in the centre, with infantry on either side, accompanied by Thessalions, Parmenion and more cavalry on the left flank. 
+                Parmenion warned Alexander that crossing the river would be a risky move due to the fact that the water would disrupt the formations, recommending that they encamped on the river bed and wait until tomorrow at dawn to cross. Alexander disregarded this idea, ordering an immediate attack.
+                It's important to note that Alexander's recklessness is a recurring theme within the writings of ancient historians, where they tend to paint Parmenion as more rational character and Alexander as fierce but victorious after overlooking his generals advice. This idea was possibly popularised by Callisthenes for the sole purpose of enhancing Alexander's heroism, suggesting that the discussion between Alexander and Parmenion may have been nothing but fiction.
+                Both Arrian and Plutarch say that Alexander and his army attacked straight across the river; however this has been determined impossible as the river bed would have been too high for the cavalry to climb. Diodorus of Sicily proposed a more plausible idea, advocating that the Macedonians crossed the granicus at night and attacked the next morning before dawn.
+                In Arrian's account, Alexander's whole army charged forward but he and his companion cavalry took a different approach; they aimed for the Persian centre. 
+                Led by the king himself, once the right flank was across the river, they charged at the Persian centre, constantly deflecting attacks from all directions, nearly fighting like infantry due to how cramped the battle was.
+                Alexander was struck multiple times, his aspis shielding him from any deadly blows.
+                Sometime during the battle, his xyston broke, which was a long lance, and he had to get another one from his servant, Aretis.
+                A persian noble by the name of Rhosaces attempted to strike Alexander in the back of his head, however, he was protected by his helmet. Whilst stunned by the blow, Sphithridates geared up to attack Alexander from behind but was stopped short because his arm was sliced clean off by Cleitus the Black (BADAAADSSSSS MFFF)
+                With more macedonian infantry advancing across the river by the minute and more yet to come, the macedonian cavalry got a chance to rest while the macedonians slowly pushed the persian cavalry back.
+                The macedonian phalanxes in the centre continued to rapidly gain ground, causing the persian centre to cave, forcing them to commit their reserves. Parmenion, still on the left, ordered an aggressive charge down behind the battling Macedonian and Persian centres. The Persians, stunned by this sudden attack, backed away, and the Greek mercenaries surrendered. 
+                Despite Alexander nearing death multiple times, the Macedonians came out victorious, but at a cost. A total of 115 Macedonian soldiers were killed in battle, 25 of the companion cavalry being killed in the first charge, 60 from the remaining cavalry and around 30 infantry. The Persians, on the other hand, suffered a much larger number of fatalities, with around 1,000 cavalry being struck down in battle, and 2,000 Greek mercenaries were taken hostage according to Arrian.
+                </p>
+        </div>
+    
+        <div class="content" id="demicroblog"><div class="bar">microblog.de</div><h2 class="backbtn">back</h2>
+        <hr>
+        <span>30.11.23 / 16:13</span>
+        <p>heute habe ich TDAS zu ende zugeschaut. il duncan!! das ist alles, ich bin sehrrr müde und gelangweilt. das bin ich raus.</p>
+        <img src="/images/duncan.jpg" style="width: 50%;">
+        <hr>
+        <span>29.11.23 / 23:36</span>
+        <p> hallo, willkommen in meinem microblog. hier schreib ich über mein leben, allerdings auf deutsch. ich entschuldig mich für die grammatikfehler, meine deutschkenntnisse im schreiben sind schrecklich (meine deutschkenntnisse im lesen sind veillllll besser :D). ich möchte nur praktizieren. heute hab ich nichts gemacht, außer spiele zu spielen und an meiner webseite zuarbeiten. ich hab ein neues wetter widget hinzugefügt, das die temperatur anzeigt. jetzt melde ich mich ab!</p>
+        </div>
+        <div class="content" id="enmicroblog"><div class="bar">microblog.en</div><h2 class="backbtn">back</h2>
+        <hr>
+        <span>30.11.23 / 16:47</span>
+        <p>hey!! welcome to my english microblog!! i will try to update everyday, but no worries if i cant. </p>
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if(window.location.hash) {
+                var hash = window.location.hash.substring(1);
+                console.log(hash)
+                var contents = document.querySelectorAll('.content');
+                contents.forEach(function (content) {
+                        content.classList.remove('active');
+                });
+                document.getElementById(hash).classList.add('active');
+            }
+
+        var posts = document.querySelectorAll('.blogpost');
+        var contents = document.querySelectorAll('.content');
+        var backbtns = document.querySelectorAll('.backbtn');
+
+        posts.forEach(function (post) {
+            post.addEventListener('click', function () {
+                var targetId = post.dataset.target;
+                console.log(targetId)
+
+                contents.forEach(function (content) {
+                        content.classList.remove('active');
+                });
+                var bfrhagh = window.location.href.split('#')[0];
+                console.log(bfrhagh)
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    
+        backbtns.forEach(function (backbtn) {
+    backbtn.addEventListener('click', function () {
+        contents.forEach(function (content) {
+            content.classList.remove('active');
+            document.getElementById('main').classList.add('active');
+        });
+    });
+});
+    });
+</script>
+</body>
+</html>

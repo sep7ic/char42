@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @font-face {
+        font-family: futurama;
+        src: url(/fonts/fr-bold.ttf);
+    }
+    body {
+        margin: 0;
+        height: 100%;
+        font-family: futurama;
+    }
+    #myVideo {
+  margin: 0 auto;
+  position: absolute;
+  width: 70%;
+  margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+padding-top: 8%;
+z-index: 1;
+}
+#info {
+    font-size: 10px;
+    margin: 0 auto;
+  position: absolute;
+  width: 40%;
+  z-index: 0;
+  margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+padding-top: 10%;
+}
+#extra {
+  margin: 0 auto;
+  position: absolute;
+  width: 70%;
+  margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+padding-top: 8%;
+z-index: 0;
+}
+</style>
+<body>
+    <div onclick="openCity('extra')" style="z-index: 3; width: 30px; height: 30px; background-color: #3e552e; position: absolute; margin-top: 30%; margin-left: 22%; border-radius: 50%; outline: black solid 1px;"></div>
+    <div onclick="openCity('info')" style="z-index: 3; width: 30px; height: 30px; background-color: #3e552e; position: absolute; margin-top: 27%; margin-left: 22%; border-radius: 50%; outline: black solid 1px;"></div>
+    <div onclick="openCity('myVideo')" style="z-index: 3; width: 30px; height: 30px; background-color: #3e552e; position: absolute; margin-top: 24%; margin-left: 22%; border-radius: 50%; outline: black solid 1px;"></div>
+    <img src="/images/screen.png" style="width: 100%; position: absolute; z-index: 2; pointer-events: none;">
+    
+    <video autoplay loop onloadeddata="this.play();" onclick="this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" id="myVideo" class="city">
+        <source src="https://files.catbox.moe/1b3boc.mp4" type="video/mp4">
+    </video>
+
+    <div id="info" class="city">
+        <h1>ALL GLORY TO THE</h1>
+        <h1 style="margin: 2px;">HYPNOTOAD</h1>
+        <p>apart from the main show/movies, hypnotoad appears twice in the comics (issue 43 and 77), in the game, and in two special episodes.</p>
+        <p>there is a small chance that hypnotoad uses delta brain waves to control his victims (in s5e15 4:02 [DVD vers], after hypnotoad comes on, fry says "This show's been going downhill since season three." where as everyone else appears to enjoy it which could imply that fry watched the show out of free will cuz he was a moron and not becayuse he was hypnotised.. but fry's comment about the show going down hill could be interpreted as futurama poking fun at themselves cuz in season 4 they were facing cancellation. in s2e12 at 21:05 the professor mentions that frys previously attached brain slug starved to death. i believe this was foreshadowing fry's lack of deltabrain waves (which was revealed in a later episode), whilst also playing into fry's supposed stupidity.</p>
+        <p>we all know that the writers of futurama love isaac asimov to death (the holophonor is a homage to mr asimovs visi-sonor, he and zoidberg share a similar way of pronouncing the word "robot", st. asimovs day being an official holiday celebrated on planet earth in the second month of the year, the futurama episode title "i, roommate" being a reference to asimovs book "i, robot", in "I, Robot" a character accused of being robot eats an apple to prove he is indeed human, and in the futurama episode "insane in the mainframe" fry says he eats food to prove he is a human, asimovs 3 laws of robotics being referenced in futurama etc. must i go on?) well, there is a good chance that the hypnotoad is inpsired by the v-frogs in lucky starr and the oceans of venus. v-frogs are described to have telepathic abilities and are able to control human minds, similar to the hypnotoad.</p>
+        <p>hypnotoad is one of matts favourite characters (said in dvd commentary of "the day the earth stood stupid" around 1:40 ish which i have <s>ripped</s> and linked here:)</p>
+        <audio controls name="media">
+            <source src="https://github.com/sep7ic/FuturamaDVDCommentaries/raw/main/Seasons_Movies/Season3/07%20-%20Futurama%20-%20The%20Day%20the%20Earth%20Stood%20Stupid.mp3" type="audio/mp3">
+          </audio>
+ </div>
+
+        <video id="extra" class="city" loop onclick="this.paused ? this.play() : this.pause(); arguments[0].preventDefault();">
+            <source src="https://files.catbox.moe/9fdbtk.mp4" type="video/mp4">
+        </video>
+<script>
+function openCity(cityName) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+    var video = document.getElementById("myVideo")
+    var extravideo = document.getElementById("extra")
+    }
+    document.getElementById(cityName).style.display = "block";  
+    if (cityName == "myVideo"){
+        video.play()
+    } else {
+        video.pause()
+    }
+    if (cityName == "extra"){
+        extravideo.play()
+    } else {
+        extravideo.pause()
+    }
+}
+</script>
+</body>
+</html>

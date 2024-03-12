@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>borkcoard</title>
+</head>
+<style>
+    body {
+        background-image: url("https://files.catbox.moe/tmtn73.jpg");
+    }
+    .note {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+        background-size:cover;
+        box-shadow: 1px 1px 20px;
+        cursor:grab;
+        display: inline-block;
+        margin: 30px;
+        transition: rotate 200ms, transform 200ms, margin 200ms;
+    }
+    
+.note:nth-child(2n) {
+rotate: -5deg;
+translate: 20px -20px;
+}
+    .note:nth-child(3n) {
+rotate: 5deg;
+translate: 20px 20px;
+}
+.note:active {
+    position: fixed;
+    rotate: 0deg;
+    transform: scale(1.05);
+    z-index: 10000;
+    cursor: grabbing;
+    
+}
+</style>
+<body>
+    <div class="board" id="board">
+    </div>
+
+<script>
+    async function fetchData() {
+        const response = await fetch('borkcoard.json');
+        const data = await response.json();
+        return data;
+    }
+    function createNotes(data) {
+        const container = document.getElementById('board');
+    
+        data.forEach(entry => {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.style.backgroundImage=`url( ${entry.img} )`;
+            container.prepend(note);
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', async () => {
+        const data = await fetchData();
+        createNotes(data);
+        $( ".note" ).draggable();
+    });
+    </script>
+    
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIN</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <base target="main">
+</head>
+<style>
+    .nav {width: 100%;}
+</style>
+<body>
+
+<img src="/images/logowhite.png" style="width: 100%;">
+<div class="nav">
+
+<ul>
+    <li><a href="main.html">home</a></li>
+    <li><a href="">archive</a></li>
+    <li>general</li>
+    <ul>
+        {% for general in collections.general reversed %}
+        <li><a href="{{general.url}}">{{ general.data.title }}</a> - {{ general.data.date }}</li>
+        {% endfor %}
+    </ul>
+    <li>fiction</li>
+    <ul>
+        {% for fiction in collections.fiction reversed %}
+        <li><a href="{{fiction.url}}">{{ fiction.data.title }}</a> - {{ fiction.data.date }}</li>
+        {% endfor %}
+    </ul>
+    <li>starships</li>
+    <ul>
+        {% for starships in collections.starships reversed %}
+        <li><a href="{{starships.url}}">{{ starships.data.title }}</a> - {{ starships.data.date }}</li>
+        {% endfor %}
+    </ul>
+</ul>
+
+  
+
+</div>
+</body>
+</html>

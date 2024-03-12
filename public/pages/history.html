@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<style>
+    .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+</style>
+<body>
+    <div class="content active" id="main">
+        <div class="bar">history.html</div>
+        <h1>Site history</h1>
+        <p>a history of all my site iterations.</p>
+        <p>note: links will not work</p>
+        <button class="version-button" data-target="1">Version 1</button>
+        <button class="version-button" data-target="2">Version 2</button>
+        <button class="version-button" data-target="3">Version 3</button>
+        <button class="version-button" data-target="4">Version 4</button>
+        <button class="version-button" data-target="5">Version 5</button>
+        <button class="version-button" data-target="6">Version 6</button>
+        <button class="version-button" data-target="7">Version 7</button>
+    </div>
+
+    <div class="content" id="1">
+        <div class="bar">version-1.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20221210082914/https://sep.neocities.org/" width="600" height="700">
+    </div>
+
+    <div class="content" id="2">
+        <div class="bar">version-2.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20221227020914/https://sep.neocities.org/" width="600" height="700">
+    </div>
+    <div class="content" id="3">
+        <div class="bar">version-3.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20230104144218/https://sep.neocities.org/" width="600" height="700">
+    </div>
+    <div class="content" id="4">
+        <div class="bar">version-4.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20230117231552/https://sep.neocities.org/" width="600" height="700">
+    </div>
+    <div class="content" id="5">
+        <div class="bar">version-5.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20230131182051/https://sep.neocities.org/" width="600" height="700">
+    </div>
+    <div class="content" id="6">
+        <div class="bar">version-6.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20230209192257/https://sep.neocities.org/" width="600" height="700">
+    </div>
+    <div class="content" id="7">
+        <div class="bar">version-7.mp4</div>
+        <embed type="text/html" src="https://web.archive.org/web/20230308095138/https://septicide.online/" width="600" height="700">
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var buttons = document.querySelectorAll('.version-button');
+        var contents = document.querySelectorAll('.content');
+
+        buttons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var targetId = button.dataset.target;
+                console.log(targetId)
+
+                contents.forEach(function (content) {
+                    if (content.id !== 'main') {
+                        content.classList.remove('active');
+                    }
+                });
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    });
+</script>
+</html>
