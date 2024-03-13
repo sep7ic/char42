@@ -150,7 +150,7 @@ function getPixelColor(rating) {
     const date = new Date(`20${year}`, month - 1, day);
     const dayOfWeek = daysOfWeek[date.getDay()];
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    return `${dayOfWeek}, ${date.toLocaleDateString('en-US', options)}`;
+    return `${dayOfWeek}, ${date.toLocaleDateString('en-NZ', options)}`;
 }
 
 
