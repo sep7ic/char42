@@ -144,14 +144,15 @@ function getPixelColor(rating) {
     }
 }
 
-    function formatDate(dateString) {
+function formatDate(dateString) {
     const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const [day, month, year] = dateString.split('-');
     const date = new Date(`20${year}`, month - 1, day);
     const dayOfWeek = daysOfWeek[date.getDay()];
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    return `${dayOfWeek}, ${date.toLocaleDateString('en-NZ', options)}`;
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    return `${dayOfWeek}, ${date.toLocaleDateString('en-US', options)}`;
 }
+
 
 
 function showDetails(entry) {
