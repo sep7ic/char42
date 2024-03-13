@@ -113,8 +113,8 @@ function createPixels(data) {
         container.appendChild(pixel);
 
         daysInMonth++;
-        const month = parseInt(entry.date.split('-')[1]);
-        const year = parseInt(entry.date.split('-')[2]);
+        const month = parseInt(entry.date.split('/')[1]);
+        const year = parseInt(entry.date.split('/')[2]);
         const lastDayOfMonth = new Date(year, month, 0).getDate();
 
         if (daysInMonth >= lastDayOfMonth) {
