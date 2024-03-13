@@ -1,5 +1,5 @@
 ---
-title: myfirstpost 
+title: hello computer 
 layout: base.njk
 date: "2024-03-12"
 tags: 
@@ -13,3 +13,5 @@ headHeight: 400px
 # hello computer
 
 hey. im not entirely sure what to do for my first post but im psyched to be here!!
+
+i might as well use this as an introduction post.

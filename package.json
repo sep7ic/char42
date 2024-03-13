@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "markdown-it": "^14.0.0"
   }
 }
