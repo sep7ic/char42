@@ -113,8 +113,8 @@ function createPixels(data) {
         container.appendChild(pixel);
 
         daysInMonth++;
-        const month = parseInt(entry.date.split('/')[1]);
-        const year = parseInt(entry.date.split('/')[2]);
+        const month = parseInt(entry.date.split('-')[1]);
+        const year = parseInt(entry.date.split('-')[2]);
         const lastDayOfMonth = new Date(year, month, 0).getDate();
 
         if (daysInMonth >= lastDayOfMonth) {
@@ -144,7 +144,7 @@ function getPixelColor(rating) {
     }
 }
 function formatDate(dateString) {
-    const [day, month, year] = dateString.split('/');
+    const [day, month, year] = dateString.split('-');
     const date = new Date(`20${year}`, month - 1, day);
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
