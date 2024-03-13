@@ -144,7 +144,7 @@ function getPixelColor(rating) {
     }
 }
 function formatDate(dateString) {
-    const [day, month, year] = dateString.split('-');
+    const [day, month, year] = dateString.split('/');
     const date = new Date(`20${year}`, month - 1, day);
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);
