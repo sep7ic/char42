@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>NeoPlug</title>
+     <script>
+window.onload = choosePic;
+
+var adImages = [
+    { src: "https://files.catbox.moe/1vg841.png", link: "https://sep.neocities.org/neoplug.html" },
+    { src: "https://files.catbox.moe/3pf4of.png", link: "https://sep.neocities.org/" }
+];
+
+function choosePic() {
+    rotate();
+}
+
+function rotate() {
+    var randomIndex = Math.floor(Math.random() * adImages.length);
+    var adImage = adImages[randomIndex];
+    
+    document.getElementById("centered").innerHTML = '<a href="' + adImage.link + '" target="_blank"><img src="' + adImage.src + '" id="neoplug" alt="test ad"></a>';
+    
+    setTimeout(rotate, 5000); // Rotate every 5 seconds
+}
+
+       
+     </script>
+</head>
+
+<style>
+
+body {
+  overflow: hidden;
+}
+#centered {
+     position: absolute;
+     top: 0;
+     left: 0;
+}
+.info {
+    background-color: rgba(255, 255, 255, 0.5); 
+    position: absolute;
+    top: 0;
+     left: 0;
+     z-index: 100;
+     padding: 1px;
+     text-decoration: none;
+     color: blue;
+}
+</style>
+
+<body>
+     <a href="https://sep.neocities.org/neoplug.html" class="info" target="_blank">ⓘ</a>
+     <div id="centered">
+          <a href=""><img src="" id="neoplug" alt="altolol"></a>
+     </div>
+
+</body>
+</html>
