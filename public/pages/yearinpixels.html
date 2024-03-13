@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAIN</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <base target="_blank">
+</head>
+
+<body>
+
+    
+    <div class="centre">
+        
+<style>
+    #pixels-container {
+        display: grid;
+        grid-template-columns: repeat(365, 20px);
+        gap: 1px;
+        grid-template-columns: repeat(auto-fill, minmax(25px, 1fr));
+    }
+    .pixel {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        font-size: 10px;
+        color: black;
+        text-align: center;
+        line-height: 15px;
+    }
+
+    #exmp .pixel {
+        -webkit-text-stroke: 1px black;
+        color: black;
+        text-align: center;
+        display: inline-block;
+        font-size: 15px;
+        line-height: initial;
+    }
+    #details-container {
+        display: none;
+        margin-top: 20px;
+    }
+
+    #details {
+        border: 1px solid rgb(99, 99, 99);
+        padding: 10px;
+    }
+    #details span {
+        color: grey;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+    <h1>a year in pixels</h1>
+    <p>welcome to my "a year in pixels" page!! this is essentially a fancified microblog. click on a pixel to get its entire entry.</p>
+    <p>each colour corresponds to a rating. the weird black ball thing means that particular pixel has a written log (alot of them dont)</p>
+    
+    <div style="margin-left: 10px; margin-right: 10px;">
+    
+    <div id="exmp">
+        <div class="pixel" style="background-color: #e67c73;">1</div> terrible |
+        <div class="pixel" style="background-color: #f0a06e;">2</div> bad |
+        <div class="pixel" style="background-color: #ffd666;">3</div> average |
+        <div class="pixel" style="background-color: #bccc74;">4</div> above average |
+        <div class="pixel" style="background-color: #57bb8a;">5</div> great
+    </div>
+<br>
+<div id="pixels-container"></div>
+<div id="details-container">
+    <div id="details"></div>
+</div>
+</div>
+<script>
+async function fetchData() {
+    const sheetUrl = 'https://docs.google.com/spreadsheets/d/1-tYhL5vt3FCqejAPspktpBXyvwQKaUi1qf1ZKGJM9Io/export?format=csv';
+    const response = await fetch(sheetUrl);
+    const data = await response.text();
+
+    const processedData = [];
+
+    const csvRegex = /(?:^|,)(?:"([^"]*(?:""[^"]*)*)"|([^",]*))/g;
+
+    data.split('\n').forEach(row => {
+        const columns = [];
+        let match;
+
+        while ((match = csvRegex.exec(row)) !== null) {
+            columns.push(match[1] !== undefined ? match[1] : match[2]);
+        }
+
+        if (columns.length >= 3) {
+            const date = columns[0];
+            const rating = parseInt(columns[1]);
+            const log = columns[2];
+
+            processedData.push({ date, rating, log });
+        }
+    });
+
+    return processedData;
+}
+function createPixels(data) {
+    const container = document.getElementById('pixels-container');
+    const maxPixelsPerRow = 33; 
+    let daysInMonth = 0;
+
+    data.forEach(entry => {
+        const pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        pixel.dataset.date = entry.date;
+        pixel.style.backgroundColor = getPixelColor(entry.rating);
+
+        if (entry.log.trim() !== '') {
+            pixel.innerHTML = '●'; 
+        }
+
+        pixel.addEventListener('click', () => showDetails(entry));
+
+        container.appendChild(pixel);
+
+        daysInMonth++;
+        const month = parseInt(entry.date.split('-')[1]);
+        const year = parseInt(entry.date.split('-')[2]);
+        const lastDayOfMonth = new Date(year, month, 0).getDate();
+
+        if (daysInMonth >= lastDayOfMonth) {
+            const emptyPixels = maxPixelsPerRow - daysInMonth;
+            for (let i = 0; i < emptyPixels; i++) {
+                const blackPixel = document.createElement('div');
+                blackPixel.className = 'pixel';
+                blackPixel.style.backgroundColor = 'transparent';
+                container.appendChild(blackPixel);
+            }
+            daysInMonth = 0;
+        }
+    });
+}
+
+
+
+
+function getPixelColor(rating) {
+    switch (rating) {
+        case 1: return '#e67c73';
+        case 2: return '#f0a06e';
+        case 3: return '#ffd666';
+        case 4: return '#bccc74';
+        case 5: return '#57bb8a';
+        default: return '#808080';
+    }
+}
+function formatDate(dateString) {
+    const [day, month, year] = dateString.split('-');
+    const date = new Date(`20${year}`, month - 1, day);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+function showDetails(entry) {
+    const detailsContainer = document.getElementById('details-container');
+    const detailsDiv = document.getElementById('details');
+
+    const pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => {
+        pixel.style.border = 'none';
+    });
+
+    const selectedPixel = document.querySelector(`.pixel[data-date="${entry.date}"]`);
+    selectedPixel.style.border = '2px solid white';
+
+    detailsDiv.innerHTML = `
+        <p><span>DATE:</span> ${formatDate(entry.date)}</p>
+        <p><span>RATING:</span> ${entry.rating}/5</p>
+        <p><span>LOG:</span> ${entry.log}</p>
+    `;
+
+    detailsContainer.style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const data = await fetchData();
+    const latestEntryWithRating = findLatestEntryWithRating(data);
+    if (latestEntryWithRating) {
+        createPixels(data);
+        showDetails(latestEntryWithRating);
+    }
+});
+
+function findLatestEntryWithRating(data) {
+    let latestEntry = null;
+    for (let i = data.length - 1; i >= 0; i--) {
+        if (data[i].rating) {
+            latestEntry = data[i];
+            break;
+        }
+    }
+    return latestEntry;
+}
+
+</script>
+    </div>
+
+</body>
+</html>
