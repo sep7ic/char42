@@ -145,12 +145,55 @@ function getPixelColor(rating) {
 }
 
 function formatDate(dateString) {
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const [day, month, year] = dateString.split('-');
     const date = new Date(`20${year}`, month - 1, day);
-    const dayOfWeek = daysOfWeek[date.getDay()];
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    return `${dayOfWeek}, ${date.toLocaleDateString('en-US', options)}`;
+    
+    // List of first days of each month and their corresponding days
+    const firstDays = {
+        "01": "Monday",
+        "02": "Thursday",
+        "03": "Friday",
+        "04": "Monday",
+        "05": "Wednesday",
+        "06": "Saturday",
+        "07": "Monday",
+        "08": "Thursday",
+        "09": "Sunday",
+        "10": "Tuesday",
+        "11": "Friday",
+        "12": "Sunday"
+    };
+    
+    // Get the day of the week for the current date
+    const currentDay = date.getDay();
+    
+    // Get the day of the month
+    const dayOfMonth = date.getDate();
+    
+    // Get the month
+    const monthOfYear = date.getMonth() + 1;
+    
+    // Get the adjusted day based on the list
+    const firstDayOfMonth = firstDays[monthOfYear.toString()];
+    
+    // Calculate the difference between the current day and the first day of the month
+    let dayDifference = dayOfMonth - parseInt(firstDayOfMonth);
+    
+    // If the difference is negative, add 7 to get the correct day
+    if (dayDifference < 0) {
+        dayDifference += 7;
+    }
+    
+    // Calculate the adjusted day of the week
+    const adjustedDay = (currentDay - dayDifference + 7) % 7;
+    
+    // List of days of the week
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    
+    // Construct the formatted date string
+    const formattedDate = `${daysOfWeek[adjustedDay]}, ${date.toLocaleString('default', { month: 'long' })} ${day} ${year}`;
+    
+    return formattedDate;
 }
 
 
