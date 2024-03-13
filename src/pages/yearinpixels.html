@@ -143,23 +143,16 @@ function getPixelColor(rating) {
         default: return '#808080';
     }
 }
-function formatDate(dateString) {
+
+    function formatDate(dateString) {
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const [day, month, year] = dateString.split('-');
     const date = new Date(`20${year}`, month - 1, day);
-
-    // Array of weekday names
-    const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-    // Get the day of the week index (0-6)
-    const dayOfWeekIndex = date.getUTCDay();
-
-    // Get the weekday name using the index
-    const weekdayName = weekdayNames[dayOfWeekIndex];
-
-    // Format the date with New Zealand time zone
-    const options = { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Pacific/Auckland' };
-    return `${weekdayName}, ${date.toLocaleDateString('en-US', options)}`;
+    const dayOfWeek = daysOfWeek[date.getDay()];
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return `${dayOfWeek}, ${date.toLocaleDateString('en-US', options)}`;
 }
+
 
 function showDetails(entry) {
     const detailsContainer = document.getElementById('details-container');
