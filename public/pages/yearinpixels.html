@@ -156,9 +156,39 @@ function getPixelColor(rating) {
 function formatDate(dateString) {
     const [day, month, year] = dateString.split('-');
     const date = new Date(`20${year}`, month - 1, day);
+    
+    // Days of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // Adjusted day of the week based on the provided list
+    const firstDayOfMonth = new Date(`20${year}`, month - 1, 1).getDay();
+    const monthStartDay = daysOfWeek[firstDayOfMonth];
+
+    // Get the corresponding day for the given month
+    const monthStartDays = {
+        'January': 'Monday',
+        'February': 'Thursday',
+        'March': 'Friday',
+        'April': 'Monday',
+        'May': 'Wednesday',
+        'June': 'Saturday',
+        'July': 'Monday',
+        'August': 'Thursday',
+        'September': 'Sunday',
+        'October': 'Tuesday',
+        'November': 'Friday',
+        'December': 'Sunday'
+    };
+
+    // Calculate the adjusted day
+    const index = daysOfWeek.indexOf(monthStartDay);
+    const adjustedIndex = (index + parseInt(day) - 1) % 7; // Adjust for days in the month
+    const adjustedDay = daysOfWeek[adjustedIndex];
+
     const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+    return `${adjustedDay}, ${date.toLocaleDateString('en-US', options)}`;
 }
+
 function showDetails(entry) {
     const detailsContainer = document.getElementById('details-container');
     const detailsDiv = document.getElementById('details');
@@ -201,6 +231,7 @@ function findLatestEntryWithRating(data) {
 }
 
 </script>
+
     </div>
 
 </body>
