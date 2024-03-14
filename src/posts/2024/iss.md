@@ -1,0 +1,84 @@
+---
+title: ISS 
+layout: base.njk
+tags: 
+- projects
+---
+<head>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha384- 
+  Q0C+BLIMrHYr6fzkyX9+yVOjuk0lffvcQ/EeCNy33Pc=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha384- 
+  T6kzM/s+gRaozJZ1XkN3qSp3TgTSTpFS7wOa/S+3qOJRWxqapZG7M9AjH2JW8HpA" crossorigin=""></script>
+  </head>
+
+
+<p>real time live stats about the ISS:</p>
+        <h1>ISS Location</h1>
+        <p>Latitude: <span id="latitude"></span></p>
+        <p>Longitude: <span id="longitude"></span></p>
+        <p>Velocity: <span id="velocity"></span> km/s (<span id="velocity-kmh"></span> km/h)</p>
+        <p>Above: <span id="nearest-country"></span></p>
+        <p>sorry for the map 💀 i cannot be arsed looking for a transparent image</p>
+        <div id="map" style="height: 400px;"></div>
+        <iframe width="100%" height="510" src="https://www.youtube.com/embed/P9C25Un7xaM?si=NVSJHCmyIC13Y09t&amp;controls=0&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+<script>
+   const mymap = L.map('map', {
+    zoomControl: false
+  }).setView([0, 0], 2);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+  }).addTo(mymap);
+
+  const issIcon = L.icon({
+    iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/3/33/2020-06_International_Space_Station_Configuration.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 25],
+  });
+  const issMarker = L.marker([0, 0], { icon: issIcon }).addTo(mymap);
+
+  function updateISSLocation() {
+    const url = 'https://api.wheretheiss.at/v1/satellites/25544';
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const latitude = data.latitude;
+        const longitude = data.longitude;
+        const velocity = Math.floor(data.velocity / 3600);
+        const velocityKMH = data.velocity.toFixed(2);
+
+        document.getElementById('latitude').textContent = latitude.toFixed(2);
+        document.getElementById('longitude').textContent = longitude.toFixed(2);
+        document.getElementById('velocity').textContent = velocity;
+        document.getElementById('velocity-kmh').textContent = velocityKMH;
+
+        issMarker.setLatLng([latitude, longitude]);
+
+        mymap.setView([latitude, longitude]);
+
+        const apiKey = "e760f283b9d247a4bb6d63dac4fdd101";
+        const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            let countryCode = data.results[0].components.country_code;
+            let countryName = data.results[0].components.country;
+
+            if (typeof countryCode === 'undefined' || typeof countryName === 'undefined') {
+              countryCode = 'OCEAN';
+              countryName = 'Ocean';
+            }
+
+            const nearestCountry = `${countryName} (${countryCode})`;
+            document.getElementById('nearest-country').textContent = nearestCountry;
+          })
+          .catch(error => console.error(error));
+      })
+      .catch(error => console.error(error));
+  }
+
+  setInterval(updateISSLocation, 1500);
+
+</script>

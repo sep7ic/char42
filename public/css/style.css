@@ -9,7 +9,7 @@
       background-color: black;
         background-image: url(/images/bg.jpeg); color: white;
     }
-    .centre {width: 900px; min-height: 500px; margin: 0 auto; background-color: #000000c4; margin-top: 20px; border: 1px white dotted;}
+    .centre {width: 900px; min-height: 500px; margin: 0 auto; background-color: #000000c4; margin-top: 20px; border: 1px white dotted; padding: 10px;}
     a {text-decoration: dotted; color: orange;}
     ul {display: block;
       list-style-type: disc;
@@ -20,10 +20,11 @@
     li {	display: list-item;}
     .header {height:200px; background-size: cover; background-position: 50%;}
     span {color: orange;}
-    p, h1, h2, h3 {margin: 10px;}
+    p, h1, h2, h3 {margin: 10px 0;}
     .centre img {
-      margin: 10px;
+      margin: 10px 0;
     }
+    img {max-width: 100%;}
     hr {
       border: none;
       height: 0px;

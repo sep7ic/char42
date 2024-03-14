@@ -13,11 +13,10 @@
     
     <div class="centre">
 
-<div class="header" style="background-image: url(https://files.catbox.moe/d47uxf.gif); height: 400px;"></div>
-        <h1>hello computer</h1>
-        <p><span>2024-03-12</span></p>
-        <p>hey. im not entirely sure what to do for my first post but im psyched to be here!!</p>
-
+<div class="header" style="background-image: url({{ headImg }}); height: {{ headHeight }};"></div>
+        <h1>{{ title }}</h1>
+        <p><span>{{ date }}</span></p>
+        {{ content | safe }}
     </div>
 
 </body>

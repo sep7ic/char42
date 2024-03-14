@@ -24,21 +24,21 @@
     <li class="tag">posts</li>
     <ul>
         {% for post in collections.post reversed %}
-        <li><a href="{{post.url}}">{{ post.data.title }}</a> - {{ post.data.date }}</li>
+        <li><a href="{{post.url}}">{{ post.data.title }}</a></li>
         {% endfor %}
     </ul>
 
     <li class="tag">personal</li>
     <ul>
         {% for personal in collections.personal reversed %}
-        <li><a href="{{personal.url}}">{{ personal.data.title }}</a> - {{ personal.data.date }}</li>
+        <li><a href="{{personal.url}}">{{ personal.data.title }}</a></li>
         {% endfor %}
     </ul>
 
     <li class="tag">projects</li>
     <ul>
         {% for projects in collections.projects reversed %}
-        <li><a href="{{projects.url}}">{{ projects.data.title }}</a> - {{ projects.data.date }}</li>
+        <li><a href="{{projects.url}}">{{ projects.data.title }}</a></li>
         {% endfor %}
     </ul>
 
@@ -46,23 +46,21 @@
     <ul>
         <li>i expect lots of trek and asimov to go here </li>
         {% for fiction in collections.fiction reversed %}
-        <li><a href="{{fiction.url}}">{{ fiction.data.title }}</a> - {{ fiction.data.date }}</li>
+        <li><a href="{{fiction.url}}">{{ fiction.data.title }}</a></li>
         {% endfor %}
     </ul>
 
-    <li class="tag">space/starships</li>
+    <li class="tag">rockets/starships</li>
     <ul>
-        <li>posts about both fictional and real spaceships/starships</li>
         {% for starships in collections.starships reversed %}
-        <li><a href="{{starships.url}}">{{ starships.data.title }}</a> - {{ starships.data.date }}</li>
+        <li><a href="{{starships.url}}">{{ starships.data.title }}</a></li>
         {% endfor %}
     </ul>
 
     <li class="tag">puzzles</li>
     <ul>
-        <li>speedcubing, tetris etc</li>
-        {% for starships in collections.starships reversed %}
-        <li><a href="{{starships.url}}">{{ starships.data.title }}</a> - {{ starships.data.date }}</li>
+        {% for puzzles in collections.puzzles reversed %}
+        <li><a href="{{puzzles.url}}">{{ puzzles.data.title }}</a></li>
         {% endfor %}
     </ul>
 </ul>

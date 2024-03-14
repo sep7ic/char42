@@ -3,7 +3,6 @@ title: buttons
 layout: base.njk
 date: "2024-03-13"
 tags: 
-- post
 - projects
 headImg: https://files.catbox.moe/aq6rvf.png
 headHeight: 200px
