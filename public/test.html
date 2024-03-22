@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .gamelog {
+    display: none;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+</style>
+</head>
+<body>
+
+<div class="images">
+  <img src="gamecover.png" alt="game cover">
+  <img src="gamecover2.png" alt="gamecover">
+  <img src="gamecover3.png" alt="gamecover">
+
+  <img src="gamecover3.png" alt="gamecover">
+</div>
+
+<div class="gamelog">game log #1</div>
+<div class="gamelog">gamelog 2</div>
+<div class="gamelog">game log 3</div>
+<div class="gamelog">game log 4</div>
+
+<script>
+  const images = document.querySelectorAll('.images img');
+  const divs = document.querySelectorAll('.gamelog');
+
+  images.forEach((image, index) => {
+    image.addEventListener('click', () => {
+      divs.forEach((div) => {
+        div.style.display = 'none';
+      });
+      divs[index].style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>

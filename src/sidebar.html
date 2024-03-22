@@ -10,7 +10,23 @@
 <style>
     .nav {width: 100%;}
     .tag {background-color: orange; color: black; margin-top: 10px; margin-right: 10px;}
-</style>
+    .progress-bar {
+      width: 100%;
+      height: 20px;
+      background-color: white;
+      margin-bottom: 10px;
+    }
+    .progress {
+      height: 100%;
+      background-color: orange;
+      text-align: left;
+      line-height: 20px;
+      color: white;
+    }
+    #gameimg {
+      width: 40px; height: 40px;
+    }
+  </style>
 <body>
 
 <img src="/images/logowhite.png" style="width: 100%;">
@@ -68,5 +84,46 @@
   
 
 </div>
+
+<div id="gameInfo" style="margin: 10px; padding:10px;background-color: #00000071;"></div>
+<script>
+    const userProfileUrl = 'https://retroachievements.org/API/API_GetUserProfile.php?u=septic&z=septic&y=gwStpkS5oWy9ykhXcP4WhuDbkIpQs3Zj';
+    const gameInfoUrl = 'https://retroachievements.org/API/API_GetGameInfoAndUserProgress.php?g=';
+
+    async function fetchData(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+    }
+
+    async function displayGameInfo() {
+      const userProfileData = await fetchData(userProfileUrl);
+      const lastGameID = userProfileData.LastGameID;
+      const richPresenceMsg = userProfileData.RichPresenceMsg;
+
+      const gameInfoData = await fetchData(`${gameInfoUrl}${lastGameID}&u=septic&z=septic&y=gwStpkS5oWy9ykhXcP4WhuDbkIpQs3Zj`);
+      const gameImage = `https://retroachievements.org${gameInfoData.ImageIcon}`;
+      const gameCompletion = gameInfoData.UserCompletion;
+      const gameName = gameInfoData.Title;
+
+      const gameInfoElement = document.getElementById('gameInfo');
+      gameInfoElement.innerHTML = `
+        <div style="display: flex;">
+        <img src="${gameImage}" id="gameimg" alt="${gameName} Cover">
+        
+        <div style="width: 100%; margin-left: 10px">
+        <span><strong>${gameName}</strong></span>
+        <div class="progress-bar">
+          <div class="progress" style="width: ${gameCompletion};"><span style="mix-blend-mode: difference;">${gameCompletion}</span></div>
+        </div>
+        </div>
+        </div>
+        <span style="font-size: 10px; color:white;">${richPresenceMsg}</span>
+      `;
+    }
+
+    displayGameInfo();
+  </script>
+
 </body>
 </html>
